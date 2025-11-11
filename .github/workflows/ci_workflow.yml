@@ -21,21 +21,20 @@ jobs:
       with:
         python-version: '3.12.7'
         
-    # 2. Install Dependencies (Termasuk semua yang ada di Conda/requirements)
+    # 2. Install Dependencies (Ini WAJIB menginstal semua yang dibutuhkan model)
     - name: Install dependencies for MLflow & Model
       run: |
-        # Asumsi dependencies dasar ada di sini:
         pip install mlflow==2.19.0 scikit-learn pandas numpy
-        # Jika Anda menggunakan file requirements.txt, ganti baris atas dengan:
+        # ATAU jika menggunakan requirements.txt di folder MLProject:
         # pip install -r MLProject/requirements.txt
         
-    # 3. Jalankan MLflow Project (Model Retraining)
+    # 3. Jalankan MLflow Project
     - name: Run MLflow Project and Retrain Model
       run: |
         cd MLProject
-        # JALANKAN TANPA --no-conda, karena file MLProject tidak merujuk Conda lagi
+        # Sekarang MLflow hanya akan menjalankan perintah tanpa mencoba Conda
         mlflow run . --experiment-name "CI_Retraining_Run"
-            
+
     # 4. Upload Artifacts ke GitHub
     - name: Upload MLflow Artifacts to Repository
       uses: actions/upload-artifact@v4
