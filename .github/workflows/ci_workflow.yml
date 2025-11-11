@@ -28,12 +28,12 @@ jobs:
         # ATAU jika menggunakan requirements.txt di folder MLProject:
         # pip install -r MLProject/requirements.txt
         
-    # 3. Jalankan MLflow Project
+  # 3. Jalankan MLflow Project
     - name: Run MLflow Project and Retrain Model
       run: |
         cd MLProject
-        # Sekarang MLflow hanya akan menjalankan perintah tanpa mencoba Conda
-        mlflow run . --experiment-name "CI_Retraining_Run"
+        # SOLUSI AKHIR: Memaksa MLflow menggunakan environment lokal yang sudah aktif
+        mlflow run . --experiment-name "CI_Retraining_Run" --env-manager local
 
     # 4. Upload Artifacts ke GitHub
     - name: Upload MLflow Artifacts to Repository
