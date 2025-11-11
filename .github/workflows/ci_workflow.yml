@@ -33,9 +33,9 @@ jobs:
     - name: Run MLflow Project and Retrain Model
       run: |
         cd MLProject
-        # Tambahkan --no-conda agar tidak mencari Conda
-        mlflow run . --experiment-name "CI_Retraining_Run" --no-conda
-        
+        # JALANKAN TANPA --no-conda, karena file MLProject tidak merujuk Conda lagi
+        mlflow run . --experiment-name "CI_Retraining_Run"
+            
     # 4. Upload Artifacts ke GitHub
     - name: Upload MLflow Artifacts to Repository
       uses: actions/upload-artifact@v4

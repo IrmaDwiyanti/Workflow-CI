@@ -5,9 +5,9 @@ name: Diabetes-CI-Workflow
 # Entry point yang dapat dipanggil oleh MLflow
 entry_points:
   main:
-    command: "python modelling.py"
+    # Gunakan Python environment yang sudah terinstal oleh GitHub Actions (pip)
+    command: "python modelling.py --test_size {test_size} --random_state {random_state}" 
     parameters:
       test_size: {type: float, default: 0.2}
       random_state: {type: int, default: 42}
-    # Conda environment yang digunakan
-    conda_env: conda.yaml
+    # HAPUS BARIS INI: conda_env: conda.yaml
