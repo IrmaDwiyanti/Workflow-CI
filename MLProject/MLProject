@@ -1,12 +1,12 @@
+# /Workflow-CI/MLProject/MLProject
+
 name: Diabetes-CI-Workflow
 
-# Entry point yang dapat dipanggil oleh MLflow
 entry_points:
   main:
-    # Perintah yang dieksekusi
+    # command tidak boleh memiliki spasi di depan
     command: "python modelling.py --test_size {test_size} --random_state {random_state}" 
     parameters:
       test_size: {type: float, default: 0.2}
       random_state: {type: int, default: 42}
-    # HAPUS BARIS DI BAWAH INI (PENTING!)
-    # conda_env: conda.yaml
+    # HAPUS BARIS INI JIKA MASIH ADA: conda_env: conda.yaml
